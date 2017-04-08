@@ -1,10 +1,46 @@
 <!DOCTYPE html>
 <html>
+    <meta charset="utf-8">
     <head>
-        <link href="style.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
     </head>
-    <body>
+    <body class="app">
         
+    <header><h1>Latest news</h1></header>
+    <div class="app-body">
+        <section class="app-content">
+            <!-- future content goes here -->
+        </section>
+        <section class="source-link">
+            <a href="" class="button-link">…</a>
+        </section>
+    </div>
+    <footer>
+        <span>Powered by <a href="https://newsapi.org/">NewsAPI.org</a></span>
+        <span>Author: <a href="mailto:ziankevichrichard@gmail.com">Ziankevich Richard</a></span>
+    </footer>
+
+    <div class="service" style="display: none">
+        <!-- article card template -->
+        <div id="article-template">
+            <article class="news-card">
+                <header style="">
+                    <h2></h2>
+                </header>
+                <section class="description">
+                    <p></p>
+                    <footer>
+                        <span class="author"></span>
+                        <time datetime=""></time>
+                    </footer>
+                </section>
+                <footer>
+                    <a href="" class="button-link">read full article</a>
+                </footer>
+            </article>
+        </div>
+    </div>
+
         <script src="app.js"></script>
     </body>
 </html>

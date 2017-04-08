@@ -1,0 +1,111 @@
+@import 'news-card.css';
+
+html>body {
+    font-family: 'Roboto','Helvetica','Arial',sans-serif;
+    background-color: #FAFAFA;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+}
+
+.app>header {
+  background: #42A5F5;
+  color: #fafafa;
+  padding: 0 20px;
+  position: sticky;
+  top: -45px;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.app>header h1 {
+  margin: 0;
+}
+
+.app-body {
+  flex: 1;
+  padding-top: 35px;
+}
+
+.app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app,
+.app-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-body>.source-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+.app-body>.source-link>a {
+  border: 1px solid;
+  padding: 0 25px;
+}
+.app-body>.source-link>a:before{
+  content: "go to ";
+}
+.app-body>.source-link>a:after{
+  content: " website";
+}
+.app-body>.source-link>a:hover {
+  background: transparent;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.app>footer {
+  padding: 10px 0;
+  background: #2196F3;
+  color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: 10px;
+}
+.app>footer span {
+  margin: 10px 0;
+}
+.app>footer a {
+  color: #fafafa;
+  transition: color .1s cubic-bezier(.4,0,1,1);
+}
+.app>footer a:hover {
+  color: #0D47A1;
+}
+
+.button-link {
+  text-decoration: none;
+  color: #3f51b5;
+  border: none;
+  border-radius: 2px;
+  height: 36px;
+  margin: 0;
+  padding: 0 16px;
+  font-size: 14px;
+  line-height: 36px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  will-change: box-shadow;
+  transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1);
+  outline: none;
+}

@@ -1,0 +1,36 @@
+.news-source.general,
+label[for="cat-filter-general"] {
+    background: #EEEEEE;
+}
+.news-source.technology,
+label[for="cat-filter-technology"] {
+    background: #90CAF9;
+}
+.news-source.sport,
+label[for="cat-filter-sport"] {
+    background: #A5D6A7;
+}
+.news-source.business,
+label[for="cat-filter-business"] {
+    background: #FFF59D;
+}
+.news-source.politics,
+label[for="cat-filter-politics"] {
+    background: #CE93D8;
+}
+.news-source.entertainment,
+label[for="cat-filter-entertainment"] {
+    background: #80DEEA;
+}
+.news-source.music,
+label[for="cat-filter-music"] {
+    background: #F48FB1;
+}
+.news-source.science-and-nature,
+label[for="cat-filter-science"] {
+    background: #C5E1A5;
+}
+.news-source.gaming,
+label[for="cat-filter-gaming"] {
+    background: #B0BEC5;
+}

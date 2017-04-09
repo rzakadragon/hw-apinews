@@ -1,0 +1,154 @@
+.news-sources-container {
+    display: inline-table;
+}
+@media (min-width: 1200px) {
+    .news-sources-container {
+        width: 1200px;
+    }
+}
+@media (min-width: 900px) and (max-width: 1200px) {
+    .news-sources-container {
+        width: 900px;
+    }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+    .news-sources-container {
+        width: 600px;
+    }
+}
+@media (min-width: 300px) and (max-width: 600px) {
+    .news-sources-container {
+        width: 300px;
+    }
+}
+
+.news-source {
+    background: #B3E5FC;
+    width: 300px;
+    height: 200px;
+    margin: 0;
+    padding: 1%;
+    box-sizing: border-box;
+    /*display: block;*/
+    float: left;   
+    cursor: pointer; 
+    overflow: hidden;
+    position: relative;
+}
+
+.news-source>.thumbnail-image {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    transition: height .1s cubic-bezier(.4,0,1,1);
+}
+.news-source:hover>.thumbnail-image {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 50%;
+    width: 100%;
+}
+
+.info-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 100%;
+    left: 0;
+    background-color: transparent;
+    transition: top .1s cubic-bezier(.4,0,1,1), background-color .2s cubic-bezier(.4,0,1,1);
+}
+.news-source:hover>.info-container {
+    top: 0;
+    background-color: rgba(38, 50, 56, 0.2);
+}
+
+.news-source-info {
+    height: 45%;
+    position: absolute;
+    top: 55%;
+    background: #212121;
+    color: #fafafa;
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.news-source-info>.title {
+    text-align: center;
+    margin: 3px 0;
+}
+
+.news-source-info>.description {
+    font-size: 12px;
+    color: #9E9E9E;
+}
+
+.news-source-info>.description.long-text {
+    font-size: 10px;
+}
+
+.news-sources-container>label {
+  padding: 2px 10px;
+  border: 1px solid #42a5f5;
+  border-radius: 2px;
+  color: #3F51B5;
+  cursor: pointer;
+  font-weight: 100;
+  transition: all .1s cubic-bezier(.4,0,1,1);
+  display: inline-block;
+  margin: 2px 5px 10px;
+}
+.news-sources-container>label:hover {
+  background: transparent;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+#cat-filter-all:checked~label[for="cat-filter-all"],
+#cat-filter-general:checked~label[for="cat-filter-general"],
+#cat-filter-technology:checked~label[for="cat-filter-technology"],
+#cat-filter-sport:checked~label[for="cat-filter-sport"],
+#cat-filter-business:checked~label[for="cat-filter-business"],
+#cat-filter-politics:checked~label[for="cat-filter-politics"],
+#cat-filter-entertainment:checked~label[for="cat-filter-entertainment"],
+#cat-filter-science:checked~label[for="cat-filter-science"],
+#cat-filter-music:checked~label[for="cat-filter-music"],
+#cat-filter-gaming:checked~label[for="cat-filter-gaming"] {
+  background: #42a5f5;
+  color: #fafafa;
+}
+#cat-filter-all:checked~label[for="cat-filter-all"]:hover,
+#cat-filter-general:checked~label[for="cat-filter-general"]:hover,
+#cat-filter-technology:checked~label[for="cat-filter-technology"]:hover,
+#cat-filter-sport:checked~label[for="cat-filter-sport"]:hover,
+#cat-filter-business:checked~label[for="cat-filter-business"]:hover,
+#cat-filter-politics:checked~label[for="cat-filter-politics"]:hover,
+#cat-filter-entertainment:checked~label[for="cat-filter-entertainment"]:hover,
+#cat-filter-science:checked~label[for="cat-filter-science"]:hover,
+#cat-filter-music:checked~label[for="cat-filter-music"]:hover,
+#cat-filter-gaming:checked~label[for="cat-filter-gaming"]:hover {
+  background: rgba(66, 165, 245, 0.5);
+}
+
+.articles>.news-source {
+  display: none;
+}
+#cat-filter-all:checked~.articles>.news-source,
+#cat-filter-general:checked~.articles>.news-source.general,
+#cat-filter-technology:checked~.articles>.news-source.technology,
+#cat-filter-sport:checked~.articles>.news-source.sport,
+#cat-filter-business:checked~.articles>.news-source.business,
+#cat-filter-politics:checked~.articles>.news-source.politics,
+#cat-filter-entertainment:checked~.articles>.news-source.entertainment,
+#cat-filter-music:checked~.articles>.news-source.music,
+#cat-filter-science:checked~.articles>.news-source.science-and-nature,
+#cat-filter-gaming:checked~.articles>.news-source.gaming {
+  display: block;
+}

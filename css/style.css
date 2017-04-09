@@ -1,4 +1,6 @@
 @import 'news-card.css';
+@import 'news-source.css';
+@import 'categories-colors.css';
 
 html>body {
     font-family: 'Roboto','Helvetica','Arial',sans-serif;
@@ -23,6 +25,7 @@ html>body {
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-end;
+  z-index: 1000;
 }
 .app>header h1 {
   margin: 0;
@@ -30,7 +33,7 @@ html>body {
 
 .app-body {
   flex: 1;
-  padding-top: 35px;
+  padding-top: 10px;
 }
 
 .app-content {
@@ -108,4 +111,8 @@ html>body {
   will-change: box-shadow;
   transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1);
   outline: none;
+}
+
+.hidden {
+  display: none;
 }

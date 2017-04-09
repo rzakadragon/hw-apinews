@@ -54,20 +54,68 @@ function addArticle(articleNode){
 	return main.appendChild(articleNode)
 }
 
+function getNewSiteThumbnail(){
+	const siteThumbnail = document.getElementById('site-tumbnail-template').getElementsByTagName('article')[0];
+	return siteThumbnail.cloneNode(true)
+}
+
+function makeSiteThumbnail(newsSiteData){
+	const newThumbnail = getNewSiteThumbnail();
+
+	//set image
+	newThumbnail.querySelector('.thumbnail-image').style.backgroundImage = 'url("' + newsSiteData.urlsToLogos.large + '")';
+	//set title
+	newThumbnail.querySelector('.title').innerText = newsSiteData.name;
+	//set description
+	newThumbnail.querySelector('.description').innerText = newsSiteData.description;
+	//mark description if it's too long
+	if (newsSiteData.description.length > 200) newThumbnail.querySelector('.description').classList.add('long-text');
+	//set category class
+	newThumbnail.classList.add(newsSiteData.category);
+
+	return newThumbnail;
+}
+
+function addNewsSiteThumbnail(siteThumbnail){
+	const container = document.querySelector('.app-content>.news-sources-container>.articles');
+	return container.appendChild(siteThumbnail)
+}
+
 var debug = null;
 
 function app(){
 	/**
+	 * Make API call for news sites
+	 */
+	fetch('https://newsapi.org/v1/sources')
+	.then(function(response) {
+			// Convert to JSON
+			return response.json();
+	})
+	.then((resp)=>{
+		resp.sources.forEach( data => addNewsSiteThumbnail(makeSiteThumbnail(data)) );
+		debug = resp; 
+		return resp;})
+	.then(console.log)
+	.catch(console.error);
+
+
+	/**
 	 * Make API call
 	 */
-	fetch(articlesURL + '?' + makeGETValues(APICallParams))
+	/*fetch(articlesURL + '?' + makeGETValues(APICallParams))
 	.then(function(response) { 
 			// Convert to JSON
 			return response.json();
 	})
-	.then((resp)=>{resp.articles.forEach( data => addArticle(makeArticleNode(data)) ); debug = resp; return resp;})
+	.then((resp)=>{
+		resp.articles.forEach( data => addArticle(makeArticleNode(data)) ); 
+		debug = resp; 
+		return resp;})
 	.then(console.log)
-	.catch(console.error);
+	.catch(console.error);*/
+
+	
 
 }
 

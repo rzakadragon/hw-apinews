@@ -6,10 +6,54 @@
     </head>
     <body class="app">
         
+     <!--controls 
+    <div class="filters" style="/*display: none;*/">
+        <input type="radio" name="category" id="cat-filter-all" value="all" checked>
+        <input type="radio" name="category" id="cat-filter-general" value="general">
+        <input type="radio" name="category" id="cat-filter-technology" value="technology">
+        <input type="radio" name="category" id="cat-filter-sport" value="sport">
+        <input type="radio" name="category" id="cat-filter-business" value="business">
+        <input type="radio" name="category" id="cat-filter-politics" value="politics">
+        <input type="radio" name="category" id="cat-filter-entertainment" value="entertainment">
+        <input type="radio" name="category" id="cat-filter-music" value="music">
+        <input type="radio" name="category" id="cat-filter-science" value="science-and-nature">
+        <input type="radio" name="category" id="cat-filter-gaming" value="gaming">
+    </div>    -->
+
     <header><h1>Latest news</h1></header>
     <div class="app-body">
         <section class="app-content">
-            <!-- future content goes here -->
+            <!-- news sites thumbnails container -->
+            <section class="news-sources-container">
+                <!-- controls -->
+                <input class="hidden" type="radio" name="category" id="cat-filter-all" value="all" checked>
+                <input class="hidden" type="radio" name="category" id="cat-filter-general" value="general">
+                <input class="hidden" type="radio" name="category" id="cat-filter-technology" value="technology">
+                <input class="hidden" type="radio" name="category" id="cat-filter-sport" value="sport">
+                <input class="hidden" type="radio" name="category" id="cat-filter-business" value="business">
+                <input class="hidden" type="radio" name="category" id="cat-filter-politics" value="politics">
+                <input class="hidden" type="radio" name="category" id="cat-filter-entertainment" value="entertainment">
+                <input class="hidden" type="radio" name="category" id="cat-filter-music" value="music">
+                <input class="hidden" type="radio" name="category" id="cat-filter-science" value="science-and-nature">
+                <input class="hidden" type="radio" name="category" id="cat-filter-gaming" value="gaming">
+                
+                <label for="cat-filter-all">all</label>
+                <label for="cat-filter-general">general</label>
+                <label for="cat-filter-technology">technology</label>
+                <label for="cat-filter-sport">sport</label>
+                <label for="cat-filter-business">business</label>
+                <label for="cat-filter-politics">politics</label>
+                <label for="cat-filter-entertainment">entertainment</label>
+                <label for="cat-filter-music">music</label>
+                <label for="cat-filter-science">science</label>
+                <label for="cat-filter-gaming">gaming</label>
+
+                <div class="articles"></div>
+
+            </section>
+            
+            <!-- future content goes here -->            
+
         </section>
         <section class="source-link">
             <a href="" class="button-link">…</a>
@@ -21,6 +65,7 @@
     </footer>
 
     <div class="service" style="display: none">
+
         <!-- article card template -->
         <div id="article-template">
             <article class="news-card">
@@ -39,6 +84,20 @@
                 </footer>
             </article>
         </div>
+
+        <!-- news site tumbnail -->
+        <div id="site-tumbnail-template">
+            <article class="news-source">
+                <div class="thumbnail-image" style=""></div>
+                <div class="info-container">
+                    <div class="news-source-info">
+                        <span class="title"></span>
+                        <span class="description"></span>
+                    </div>
+                </div>
+            </article>
+        </div>
+
     </div>
 
         <script src="app.js"></script>

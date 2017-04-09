@@ -97,7 +97,7 @@ function returnToThumbnails(){
 function getNews(source){
 	APICallParams.source = source || 'national-geographic';
 	/**
-	 * Make API call for news sites
+	 * Make API call for news
 	 */
 	fetch(articlesURL + '?' + makeGETValues(APICallParams))
 	.then(function(response) {
@@ -107,7 +107,7 @@ function getNews(source){
 	.then((resp)=>{
 		document.querySelector('.loader').classList.add('hidden');
 		console.log(resp);
-		resp.articles.forEach( data => addArticle(makeArticleNode(data)) );		
+		resp.articles.forEach( data => addArticle(makeArticleNode(data)) );	
 		return resp;
 	})
 	.then(console.log)
@@ -123,6 +123,9 @@ function thumbnailClickHandler(e){
 			navLinkText = e.target.parentElement.dataset.source_name || 'back';
 
 	document.querySelector('label[for="view-trigger"]').innerText = navLinkText;
+	document.querySelector('.source-link>.button-link').innerText = navLinkText;
+	document.querySelector('.source-link>.button-link').href = e.target.parentElement.dataset.source_url;
+	window.scrollTo(0,0);
 	console.log(newsSourceId);
 	getNews(newsSourceId);
 }

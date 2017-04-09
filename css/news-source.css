@@ -22,6 +22,16 @@
     }
 }
 
+.news-sources-container .loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: #9E9E9E;
+  font-size: 40px;
+  letter-spacing: 10px;
+}
+
 .news-source {
     background: #B3E5FC;
     width: 300px;

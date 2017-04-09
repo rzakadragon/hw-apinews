@@ -39,14 +39,18 @@ html>body {
 .app-content {
   flex: 1;
   display: flex;
+  left: 0;
   flex-direction: column;
   align-items: center;
+  transform: translateX(0);
+  transition: all 0.2s cubic-bezier(.4,0,1,1);
 }
 
 .app,
 .app-body {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .app-body>.source-link {
@@ -72,6 +76,7 @@ html>body {
 }
 
 .app>footer {
+  margin-top: 20px;
   padding: 10px 0;
   background: #2196F3;
   color: #fafafa;
@@ -114,5 +119,45 @@ html>body {
 }
 
 .hidden {
+  display: none;
+}
+
+#view-trigger:not(:checked)~.app-body>.source-link {
+  display: none;
+}
+#view-trigger:checked~.app-body>.app-content {
+  /*transform: translateX(-110vw);*/
+  position: absolute;
+  left: -100vw;
+}
+header>label[for="view-trigger"] {
+  padding: 0 15px;
+  font-size: 36px;
+  left: -100%;
+  position: relative;
+  transition: all 0.2s;
+  cursor: pointer;
+  color: #fafafa;
+}
+header>label[for="view-trigger"]:before {
+  content: "⇦";
+}
+header>label[for="view-trigger"]:hover {
+  color: #1976D2;
+}
+#view-trigger:checked~header>label[for="view-trigger"] {
+  left: 0;
+}
+
+.app-news {
+  /*position: absolute;*/
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#view-trigger:not(:checked)~.app-body>.app-news {
   display: none;
 }

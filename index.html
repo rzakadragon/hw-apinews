@@ -5,24 +5,17 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body class="app">
-        
-     <!--controls 
-    <div class="filters" style="/*display: none;*/">
-        <input type="radio" name="category" id="cat-filter-all" value="all" checked>
-        <input type="radio" name="category" id="cat-filter-general" value="general">
-        <input type="radio" name="category" id="cat-filter-technology" value="technology">
-        <input type="radio" name="category" id="cat-filter-sport" value="sport">
-        <input type="radio" name="category" id="cat-filter-business" value="business">
-        <input type="radio" name="category" id="cat-filter-politics" value="politics">
-        <input type="radio" name="category" id="cat-filter-entertainment" value="entertainment">
-        <input type="radio" name="category" id="cat-filter-music" value="music">
-        <input type="radio" name="category" id="cat-filter-science" value="science-and-nature">
-        <input type="radio" name="category" id="cat-filter-gaming" value="gaming">
-    </div>    -->
 
-    <header><h1>Latest news</h1></header>
+    <!-- trigger for sites-cards/news-cards -->
+    <input type="checkbox" id="view-trigger" class="hidden"></input>
+
+    <header>
+        <label for="view-trigger"></label>
+        <h1>Latest news</h1>
+    </header>
     <div class="app-body">
         <section class="app-content">
+
             <!-- news sites thumbnails container -->
             <section class="news-sources-container">
                 <!-- controls -->
@@ -48,6 +41,10 @@
                 <label for="cat-filter-science">science</label>
                 <label for="cat-filter-gaming">gaming</label>
 
+                <div class="loader">
+                    <span>Loading…</span>
+                </div>
+
                 <div class="articles"></div>
 
             </section>
@@ -55,8 +52,9 @@
             <!-- future content goes here -->            
 
         </section>
+        <section class="app-news"></section>
         <section class="source-link">
-            <a href="" class="button-link">…</a>
+            <a href="" class="button-link"></a>
         </section>
     </div>
     <footer>
@@ -87,7 +85,13 @@
 
         <!-- news site tumbnail -->
         <div id="site-tumbnail-template">
-            <article class="news-source">
+            <label 
+            for="view-trigger" 
+            class="news-source" 
+            data-source_id="" 
+            data-source_url="" 
+            data-source_name=""
+            >
                 <div class="thumbnail-image" style=""></div>
                 <div class="info-container">
                     <div class="news-source-info">
@@ -95,7 +99,7 @@
                         <span class="description"></span>
                     </div>
                 </div>
-            </article>
+            </label>
         </div>
 
     </div>

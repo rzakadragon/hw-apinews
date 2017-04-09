@@ -50,12 +50,12 @@ function makeArticleNode(articleData){
 }
 
 function addArticle(articleNode){
-	const main = document.querySelector('.app-content');
+	const main = document.querySelector('.app-news');
 	return main.appendChild(articleNode)
 }
 
 function getNewSiteThumbnail(){
-	const siteThumbnail = document.getElementById('site-tumbnail-template').getElementsByTagName('article')[0];
+	const siteThumbnail = document.querySelector('#site-tumbnail-template .news-source');
 	return siteThumbnail.cloneNode(true)
 }
 
@@ -72,6 +72,12 @@ function makeSiteThumbnail(newsSiteData){
 	if (newsSiteData.description.length > 200) newThumbnail.querySelector('.description').classList.add('long-text');
 	//set category class
 	newThumbnail.classList.add(newsSiteData.category);
+	//set source_id
+	newThumbnail.dataset.source_id = newsSiteData.id;
+	//set source_url
+	newThumbnail.dataset.source_url = newsSiteData.url;
+	//set source_url
+	newThumbnail.dataset.source_name = newsSiteData.name;
 
 	return newThumbnail;
 }
@@ -81,41 +87,65 @@ function addNewsSiteThumbnail(siteThumbnail){
 	return container.appendChild(siteThumbnail)
 }
 
-var debug = null;
+function returnToThumbnails(){
+	document.querySelectorAll('.app-body .news-card').forEach(article=>article.style.display="none");
+}
+
+/**
+ * get news
+ */
+function getNews(source){
+	APICallParams.source = source || 'national-geographic';
+	/**
+	 * Make API call for news sites
+	 */
+	fetch(articlesURL + '?' + makeGETValues(APICallParams))
+	.then(function(response) {
+		// Convert to JSON
+		return response.json();
+	})
+	.then((resp)=>{
+		document.querySelector('.loader').classList.add('hidden');
+		console.log(resp);
+		resp.articles.forEach( data => addArticle(makeArticleNode(data)) );		
+		return resp;
+	})
+	.then(console.log)
+	.catch(function(error){
+		console.log(error);
+		document.querySelector('#view-trigger').checked = false;
+		returnToThumbnails();
+	});
+}
+
+function thumbnailClickHandler(e){
+	const 	newsSourceId = e.target.parentElement.dataset.source_id,
+			navLinkText = e.target.parentElement.dataset.source_name || 'back';
+
+	document.querySelector('label[for="view-trigger"]').innerText = navLinkText;
+	console.log(newsSourceId);
+	getNews(newsSourceId);
+}
 
 function app(){
 	/**
 	 * Make API call for news sites
 	 */
-	fetch('https://newsapi.org/v1/sources')
+	fetch(sourcesURL)
 	.then(function(response) {
-			// Convert to JSON
-			return response.json();
+		// Convert to JSON
+		return response.json();
 	})
 	.then((resp)=>{
+		document.querySelector('.loader').classList.add('hidden')
 		resp.sources.forEach( data => addNewsSiteThumbnail(makeSiteThumbnail(data)) );
-		debug = resp; 
-		return resp;})
+		document.querySelectorAll('.news-source').forEach(thumbnail=>thumbnail.addEventListener('click',thumbnailClickHandler));
+		return resp;
+	})
 	.then(console.log)
 	.catch(console.error);
 
-
-	/**
-	 * Make API call
-	 */
-	/*fetch(articlesURL + '?' + makeGETValues(APICallParams))
-	.then(function(response) { 
-			// Convert to JSON
-			return response.json();
-	})
-	.then((resp)=>{
-		resp.articles.forEach( data => addArticle(makeArticleNode(data)) ); 
-		debug = resp; 
-		return resp;})
-	.then(console.log)
-	.catch(console.error);*/
-
-	
+	document.querySelector('label[for="view-trigger"]').addEventListener('click',returnToThumbnails);
 
 }
 
